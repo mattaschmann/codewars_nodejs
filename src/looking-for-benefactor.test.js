@@ -1,4 +1,4 @@
-const newAvg = require('./new-avg')
+const newAvg = require('./looking-for-benefactor')
 
 test('will throw an error if the result would have been less than or equal to 0', () => {
   expect(() => newAvg([10, 10], 2)).toThrow()
