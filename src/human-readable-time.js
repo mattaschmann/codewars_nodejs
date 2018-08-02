@@ -5,7 +5,7 @@ function humanReadable(seconds) {
   const minutes = parseInt((seconds % 3600) / 60)
   const secs = seconds  % 60
 
-  const f = (n) => n.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+  const f = (n) => n < 10 ? `0${n}` : n
 
   return `${f(hours)}:${f(minutes)}:${f(secs)}`
 }
