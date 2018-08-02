@@ -6,6 +6,10 @@
     "test": "jest --watch"
   },
   "devDependencies": {
+    "eslint-plugin-jest": "^21.18.0",
     "jest": "^23.4.2"
+  },
+  "dependencies": {
+    "eslint": "^5.2.0"
   }
 }
