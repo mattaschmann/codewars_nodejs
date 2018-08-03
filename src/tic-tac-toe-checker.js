@@ -1,3 +1,5 @@
+// https://www.codewars.com/kata/525caa5c1bf619d28c000335
+
 function isSolved(board) {
   const cols = board.reduce((acc, a) => {
     a.forEach((x, i) => acc[i].push(x))
