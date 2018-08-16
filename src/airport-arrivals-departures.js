@@ -1,3 +1,5 @@
+// https://www.codewars.com/kata/57feb00f08d102352400026e
+
 const ROTOR = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ?!@#&()|<>.:=-+*/0123456789'
 
 function flapDisplay (lines, rotors) {
