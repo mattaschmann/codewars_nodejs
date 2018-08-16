@@ -1,30 +1,36 @@
 // https://www.codewars.com/kata/57feb00f08d102352400026e
 
-const ROTOR = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ?!@#&()|<>.:=-+*/0123456789'
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ?!@#&()|<>.:=-+*/0123456789'
+
+// Recreate the rotor array to sum up the number and its predecessor
+function sumRoter(rotor) {
+  return rotor.reduce((acc, n) => {
+    acc.push(acc.length ? n + acc[acc.length-1] : n)
+    return acc
+  }, [])
+}
+
+// Increment each character, cycle if needed
+function incrementLine(line, sumRotor) {
+  return line
+    .split('')
+    .map((c, i) => {
+      const newIndex = (ALPHABET.indexOf(c) + sumRotor[i]) % ALPHABET.length
+      return ALPHABET[newIndex]
+    })
+    .join('')
+}
 
 function flapDisplay (lines, rotors) {
   return lines
-    // Map lines to rotors
-    .map((line, i) => {
-      // Recreate the rotor array to sum up the number and its predecessor
-      let rotor = rotors[i].reduce((acc, n) => {
-        acc.push(acc.length ? n + acc[acc.length-1] : n)
-        return acc
-      }, [])
-      return [line, rotor]
-    })
-    // Increment each character, cycling
-    .reduce((acc, [line, rotor]) => {
-      acc.push(
-        Array.prototype.map.call(line, (c, i) => {
-          let newIndex = (ROTOR.indexOf(c) + rotor[i]) % ROTOR.length
-          return ROTOR[newIndex]
-        }).join('')
-      )
-
+  // Map lines to rotors
+    .map((line, i) => [line, sumRoter(rotors[i])])
+  // Increment each character, cycling
+    .reduce((acc, [line, sumRoter]) => {
+      acc.push(incrementLine(line, sumRoter))
       return acc
     }, [])
 }
 
 
-module.exports = flapDisplay
+module.exports = { incrementLine, flapDisplay, sumRoter }
