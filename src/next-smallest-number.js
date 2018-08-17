@@ -17,11 +17,10 @@ function nextSmaller(n) {
   let s = n.toString().split('')
   const [i, j] = findSwapIndexes(s)
 
-  if (i == -1 || s[j] == '0') return -1
+  if (i == -1) return -1
 
-  let tmp = s[i]
-  s[i] = s[j]
-  s[j] = tmp
+  let tmp = s.splice(i, 1)[0]
+  s.splice(j, 0, tmp)
 
   return parseInt(s.join(''))
 }

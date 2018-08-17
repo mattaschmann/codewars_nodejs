@@ -18,7 +18,7 @@ test('it returns correctly for a base case', () => {
 })
 
 test('more tricky cases', () => {
-  expect(nextSmaller(201)).toEqual(102)
+  expect(nextSmaller(201)).toEqual(120)
   expect(nextSmaller(414)).toEqual(144)
 })
 
