@@ -6,16 +6,21 @@ function nextSmaller(n) {
     .map(c => parseInt(c))
     .reverse()
 
-  let swapIndex = revArray
-    .findIndex((n, i, arr) => {
-      return n > arr[0]
-    })
+  let found = false
+  for (let i = 0; i < revArray.length; i++) {
+    if (found) break
+    for (let j = i+1; j < revArray.length; j++) {
+      if (revArray[i] < revArray[j]) {
+        let tmp = revArray[j]
+        revArray[j] = revArray[i]
+        revArray[i] = tmp
+        found = true
+        break
+      }
+    }
+  }
 
-  if (swapIndex === -1) return -1
-
-  let tmp = revArray[swapIndex]
-  revArray[swapIndex] = revArray[0]
-  revArray[0] = tmp
+  if (!found) return -1
 
   revArray.reverse()
 
