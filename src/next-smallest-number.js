@@ -20,6 +20,12 @@ function nextSmaller(n) {
 
     let num = parseInt(sArr.join(''))
 
+    if (num == n) {
+      let rem = nextSmaller(parseInt(n.toString().substring(1)))
+
+      if (rem !== -1) num = parseInt(first.toString() + rem.toString())
+    }
+
     if (num < n) return num
 
     first--
