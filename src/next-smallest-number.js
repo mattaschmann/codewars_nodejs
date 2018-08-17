@@ -1,29 +1,32 @@
 // https://www.codewars.com/kata/next-smaller-number-with-the-same-digits
 
-function findSwapIndexes(s) {
-  for (let i = s.length-1; i >= 0 ; i--) {
-    for (let j = i-1; j >= 0; j--) {
-      if (s[i] === '0' && j === 0) continue
-      if (parseInt(s[i]) < parseInt(s[j])) {
-        return [i, j]
-      }
+function nextSmaller(n) {
+  let sArr = n
+    .toString()
+    .split('')
+    .map(c => parseInt(c))
+
+  let first = (sArr[0])
+
+  while (first > 0) {
+    if (!sArr.includes(first)) {
+      first--
+      continue
     }
+
+    const tmp = sArr.splice(sArr.findIndex(x => x === first), 1)[0]
+    sArr.sort((a, b) => b-a)
+    sArr.unshift(tmp)
+
+    let num = parseInt(sArr.join(''))
+
+    if (num < n) return num
+
+    first--
   }
 
-  return [-1, -1]
-}
-
-function nextSmaller(n) {
-  let s = n.toString().split('')
-  const [i, j] = findSwapIndexes(s)
-
-  if (i == -1) return -1
-
-  let tmp = s.splice(i, 1)[0]
-  s.splice(j, 0, tmp)
-
-  return parseInt(s.join(''))
+  return -1
 }
 
 
-module.exports = { nextSmaller, findSwapIndexes }
+module.exports = { nextSmaller }

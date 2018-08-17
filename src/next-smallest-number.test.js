@@ -1,4 +1,4 @@
-const { nextSmaller, findSwapIndexes } = require('./next-smallest-number')
+const { nextSmaller } = require('./next-smallest-number')
 
 
 test('it returns correctly for a very a basic error case', () => {
@@ -24,11 +24,6 @@ test('more tricky cases', () => {
 
 test('problem numbers', () => {
   expect(nextSmaller(907)).toEqual(790)
-})
-
-test('findSwapIndexes', () => {
-  expect(findSwapIndexes('10')).toEqual([-1, -1])
-  expect(findSwapIndexes('201')).toEqual([2, 0])
-  expect(findSwapIndexes('414')).toEqual([1, 0])
-  expect(findSwapIndexes('907')).toEqual([2, 0])
+  expect(nextSmaller(315)).toEqual(153)
+  expect(nextSmaller(531)).toEqual(513)
 })
