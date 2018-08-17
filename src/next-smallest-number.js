@@ -1,34 +1,22 @@
 // https://www.codewars.com/kata/next-smaller-number-with-the-same-digits
 
 function nextSmaller(n) {
-  let sArr = n
+  const initial = n
     .toString()
     .split('')
-    .map(c => parseInt(c))
+    .sort()
 
-  let first = (sArr[0])
+  while (n > 0) {
+    n--
 
-  while (first > 0) {
-    if (!sArr.includes(first)) {
-      first--
-      continue
-    }
+    const s = n
+      .toString()
+      .split('')
+      .sort()
 
-    const tmp = sArr.splice(sArr.findIndex(x => x === first), 1)[0]
-    sArr.sort((a, b) => b-a)
-    sArr.unshift(tmp)
+    if (s.length < initial.length) return -1
 
-    let num = parseInt(sArr.join(''))
-
-    if (num == n) {
-      let rem = nextSmaller(parseInt(n.toString().substring(1)))
-
-      if (rem !== -1) num = parseInt(first.toString() + rem.toString())
-    }
-
-    if (num < n) return num
-
-    first--
+    if (s.join('') == initial.join('')) return n
   }
 
   return -1

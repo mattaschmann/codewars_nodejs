@@ -26,4 +26,5 @@ test('problem numbers', () => {
   expect(nextSmaller(907)).toEqual(790)
   expect(nextSmaller(315)).toEqual(153)
   expect(nextSmaller(531)).toEqual(513)
+  expect(nextSmaller(2071)).toEqual(2017)
 })
