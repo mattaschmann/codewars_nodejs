@@ -1,4 +1,4 @@
-const { nextSmaller } = require('./next-smallest-number')
+const { nextSmaller, weirdSort } = require('./next-smallest-number')
 
 
 test('it returns correctly for a very a basic error case', () => {
@@ -26,5 +26,14 @@ test('problem numbers', () => {
   expect(nextSmaller(907)).toEqual(790)
   expect(nextSmaller(315)).toEqual(153)
   expect(nextSmaller(531)).toEqual(513)
+  expect(nextSmaller(20721)).toEqual(20712)
   expect(nextSmaller(2071)).toEqual(2017)
+})
+
+test('weirdSort', () => {
+  expect(weirdSort([0])).toEqual([0])
+  expect(weirdSort([0, 1])).toEqual([0, 1])
+  expect(weirdSort([1, 0, 1])).toEqual([0, 1, 1])
+  expect(weirdSort([9, 0, 7])).toEqual([7, 9, 0])
+  expect(weirdSort([4, 2, 1, 3])).toEqual([3, 4, 2, 1])
 })
